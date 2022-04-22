@@ -98,7 +98,22 @@ public class UtilityMethods {
 		
 	}
 	
-	public void SelectByvisible(WebElement Select , String a)
+	public void SelectByvisible(WebElement SelectText,String a)
+	{
+		Select select= new Select(SelectText);
+		select.selectByVisibleText(a);
+	}
+	
+	public void Select_By_Index(WebElement SelectIndex ,int  a)
+	
+	{
+		Select select= new Select(SelectIndex);
+		select.selectByIndex(a);
+		
+	}
+	
+	
+	
 	
 	
 	
