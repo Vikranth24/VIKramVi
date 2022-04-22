@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -22,7 +23,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 /**
  * 
- * @author Vikranth
+ *  Vikranth 
  *
  */
 
@@ -41,18 +42,14 @@ public class Base_Class implements FrameworkConstants{
 		if(browserName.equalsIgnoreCase("chrome")) {
 			WebDriverManager.chromedriver().setup();
 			driver=new ChromeDriver();
-			/*
-			 * System.setProperty(CHROME_KEY,CHROME_PATH); driver=new ChromeDriver();
-			 * Reporter.log("Successfully Launched Chrome Browser",true);
-			 */
+			 Reporter.log("Successfully Launched Chrome Browser",true);
+
 		}else if(browserName.equalsIgnoreCase("firefox")) {
 
 			WebDriverManager.firefoxdriver().setup();
 			driver=new FirefoxDriver();
-			/*
-			 * System.setProperty(FIREFOX_KEY,FIREFOX_PATH); driver=new FirefoxDriver();
-			 * Reporter.log("Successfully Launched Firefox Browser",true);
-			 */
+			  Reporter.log("Successfully Launched Firefox Browser",true);
+			 
 		
 		}
 		
@@ -63,12 +60,17 @@ public class Base_Class implements FrameworkConstants{
 		PropertyFileReader fileReader=new PropertyFileReader();
         String URL=fileReader.getValueProperty("URL");
 		driver.get(URL);
+		Assert.assertEquals(driver.getTitle(),"");
+		Reporter.log("Homepage is displayed successfully",true);
+
 	}
+	
 	@BeforeMethod(alwaysRun=true)
 	public void login()
 	{
 		
 	}
+	
 	
 	@AfterMethod(alwaysRun=true)
 	public void logout()
@@ -76,9 +78,14 @@ public class Base_Class implements FrameworkConstants{
 		
 	}
 	
+	
+	
 	@AfterClass(alwaysRun=true)
 	public void CloseApp() {
 		driver.quit();
-	}}
+	}
+	
+	
+	}
 
 

@@ -12,6 +12,7 @@ public interface FrameworkConstants {
 	String PROPERTIES_PATH = "/SCUBE_Frame/src/test/resources/TestData/Scube01.txt";
 	
 	String SCREENSHOT_PATH = "./ScreenShots/";
+	
 
 
 }

@@ -9,15 +9,18 @@ import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
-public class ReadExcel {
+public class ReadExcel implements FrameworkConstants{
 
-	public String ExcelPath = "./src/test/resources/v_Tiger_data.xlsx";
-	public File file = new File(ExcelPath);
+	
+	public File file = new File(EXCEL_PATH);
 	public Workbook workbook = null;
 	
 	
+	
+	
 
-	public double readNumberDataFromExcel(String sheetName, int rowNumber, int cellNumber) {
+	public double readNumberDataFromExcel(String sheetName, int rowNumber, int cellNumber)
+	{
 		
 		try {
 			FileInputStream fis = new FileInputStream(file);
@@ -34,7 +37,15 @@ public class ReadExcel {
 		return workbook.getSheet(sheetName).getRow(rowNumber).getCell(cellNumber).getNumericCellValue();
 	}
 	
-	public String readStringDataFromExcel(String sheetName, int rowNumber, int cellNumber) {
+	
+	
+
+	
+	
+	
+	
+	public String readStringDataFromExcel(String sheetName, int rowNumber, int cellNumber)
+	{
 		
 		try {
 			FileInputStream fis = new FileInputStream(file);
@@ -51,7 +62,14 @@ public class ReadExcel {
 		return workbook.getSheet(sheetName).getRow(rowNumber).getCell(cellNumber).getStringCellValue();
 	} 
 	
-	public boolean readBooleanDataFromExcel(String sheetName, int rowNumber, int cellNumber) {
+	
+	
+	
+	
+	
+	
+	public boolean readBooleanDataFromExcel(String sheetName, int rowNumber, int cellNumber)
+	{
 		
 		try {
 			FileInputStream fis = new FileInputStream(file);
@@ -67,6 +85,12 @@ public class ReadExcel {
 		}
 		return workbook.getSheet(sheetName).getRow(rowNumber).getCell(cellNumber).getBooleanCellValue();
 	}
+	
+	
+	
+	
+	
+	
 
 	public String[][] readMultipleDataFromExcel(String sheetName) {
 		
@@ -95,4 +119,7 @@ public class ReadExcel {
 		return  data;
 	
 	}
+	
+	
+	
 }
